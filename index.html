@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>He talks in maths - Radiohead Fansite</title>
+    <link rel="stylesheet" href="./stylesheet.css">
+    <script type="text/javascript" src="./radiohead.js"></script>
+	<script type="text/javascript" src="./audiojs/audio.min.js"></script>
+	<script>
+      	audiojs.events.ready(function() {
+        	//var ajs = document.getElementsByTagName('audio');
+        	var ajs = document.getElementById('ajs');
+        	var a1 = audiojs.create(ajs);
+        });
+	</script>
+</head>
+<body onload="songlist(0)">
+	<h1>Radiohead & Radiohead</h1>
+	<h2>And it rained all night...</h2>
+	<div class="albumBar">
+		<div id="album1" class="albumBox" onclick="songlist(1)" style="background-image: url('./albums/1.jpg'); background-size: 100px 100px;"></div>
+		<div id="album2" class="albumBox" onclick="songlist(2)" style="background-image: url('./albums/2.jpg'); background-size: 100px 100px;"></div>
+		<div id="album3" class="albumBox" onclick="songlist(3)" style="background-image: url('./albums/3.jpg'); background-size: 100px 100px;"></div>
+		<div id="album4" class="albumBox" onclick="songlist(4)" style="background-image: url('./albums/4.jpg'); background-size: 100px 100px;"></div>
+		<div id="album5" class="albumBox" onclick="songlist(5)" style="background-image: url('./albums/5.jpg'); background-size: 100px 100px;"></div>
+		<div id="album6" class="albumBox" onclick="songlist(6)" style="background-image: url('./albums/6.jpg'); background-size: 100px 100px;"></div>
+		<div id="album7" class="albumBox" onclick="songlist(7)" style="background-image: url('./albums/7.jpg'); background-size: 100px 100px;"></div>
+		<div id="album8" class="albumBox" onclick="songlist(8)" style="background-image: url('./albums/8.jpg'); background-size: 100px 100px;"></div>
+		<div id="album9" class="albumBox" onclick="songlist(9)" style="background-image: url('./albums/9.jpg'); background-size: 100px 100px;"></div>
+	</div>
+	<div class="albumBody"">
+		<div id="albumcover" class="albumCover"></div>
+		<div id="songlist" class="albumTracks"></div>
+		<div style="width:460px;height:36px;border:1px solid rgb(255, 255, 255);background:#404040;position:inherit;float:left;">
+			<audio id="ajs" autoplay></audio>
+		</div>
+		<iframe id="songlyrics" class="songLyrics"></iframe>
+	</div>
+</body>
+</html>

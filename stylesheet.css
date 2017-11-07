@@ -1,0 +1,440 @@
+h1 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 36px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+}
+
+h2 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+}
+
+h3 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+}
+
+p {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+}
+
+blockquote {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 21px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+}
+
+pre {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+}
+
+.albumBar{
+  /***  CSS Position  ***/
+  position:relative;
+  top:0px;
+  left:0px;
+  right:100.00%;
+
+  /***  CSS Box Model  ***/
+  width:1266px;
+  height:120px;
+  margin:0px;
+  padding:0px;
+  overflow:hidden;
+
+  /***  CSS Borders  ***/
+  border-bottom:1px solid rgb(255, 255, 255);
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:12px;
+  color:rgb(112, 104, 102);
+  background-color:rgb(60, 60, 60);
+  /*** text-align:center; ***/
+  /*** opacity:0.750; ***/
+
+}
+
+.albumBox{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+
+  /***  CSS Box Model  ***/
+  width:100px;
+  height:100px;
+  margin-top:8px;
+  margin-bottom:10px;
+  margin-left:10px;
+  margin-right:3px;
+
+  /***  CSS Borders  ***/
+  border:1px solid rgb(140, 140, 140);
+
+  /***  CSS Box Shadow  ***/
+  box-shadow: 1px 1px 2px 1px rgba(135, 130, 150, 1.000);
+  -webkit-box-shadow: 1px 1px 2px 1px rgba(135, 130, 150, 1.000);
+  -moz-box-shadow: 1px 1px 2px 1px rgba(135, 130, 150, 1.000);
+  
+  cursor:pointer;
+
+}
+
+.albumBody{
+  /***  CSS Position  ***/
+  position:relative;
+  top:0px;
+  left:0px;
+  right:100.00%;
+
+  /***  CSS Box Model  ***/
+  width:1246px;
+  min-height:300px;
+  margin:0px;
+  padding:10px;
+  overflow:hidden;
+  display:inline-block;
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:12px;
+  color:rgb(40, 30, 35);
+  background-color:rgb(160, 155, 157);
+
+}
+
+.albumCover{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+
+  /***  CSS Box Model  ***/
+  width:300px;
+  height:300px;
+  margin-right:10px;
+
+  /***  CSS Borders  ***/
+  border:1px solid rgb(255, 255, 255);
+
+  /***  CSS Text and Font  ***/
+  background-color:rgb(255, 255, 255);
+
+}
+
+.albumTracks{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  
+  /***  CSS Box Model  ***/
+  width:460px;
+  min-height:300px;
+  margin-right:10px;
+
+  /***  CSS Borders  ***/
+  border:1px solid rgb(255, 255, 255);
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  text-align:left;
+  font-size:12px;
+  color:rgb(40, 30, 35);
+  background-color:rgb(255, 255, 255);
+
+}
+
+.trackHeaderLeft{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:300px;
+  height:30px;
+  padding-top:6px;
+  padding-left:10px;
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:20px;
+  color:rgb(255, 255, 255);
+  background-color:rgb(25, 25, 25);
+  text-align:left;
+  white-space:nowrap;
+  opacity:0.750;
+
+}
+
+.trackHeaderRight{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:140px;
+  height:24px;
+  padding-top:12px;
+  padding-right:10px;
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:14px;
+  color:rgb(255, 255, 255);
+  background-color:rgb(25, 25, 25);
+  text-align:right;
+  white-space:nowrap;
+  opacity:0.750;
+  font-style:italic;
+
+}
+
+.trackItemEvenLeft{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:30px;
+  height:16px;
+  padding-top:1px;
+  padding-left:5px;
+  padding-right:5px;
+
+  /***  CSS Borders  ***/
+  border-bottom:1px solid rgb(204, 203, 203);
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:12px;
+  color:rgb(25, 25, 25);
+  background-color:rgb(235, 235, 235);
+  text-align:left;
+  white-space:nowrap;
+  opacity:0.750;
+
+}
+
+.trackItemEvenMiddle{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:360px;
+  height:15px;
+  padding-top:2px;
+
+  /***  CSS Borders  ***/
+  border-bottom:1px solid rgb(204, 203, 203);
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:12px;
+  color:rgb(25, 25, 25);
+  background-color:rgb(235, 235, 235);
+  text-align:left;
+  white-space:nowrap;
+  opacity:0.750;
+
+}
+
+.trackItemEvenRight{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:50px;
+  height:15px;
+  padding-top:2px;
+  padding-right:10px;
+
+  /***  CSS Borders  ***/
+  border-bottom:1px solid rgb(204, 203, 203);
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:12px;
+  color:rgb(25, 25, 25);
+  background-color:rgb(235, 235, 235);
+  text-align:right;
+  white-space:nowrap;
+  opacity:0.750;
+  font-style:italic;
+
+}
+
+.trackItemOddLeft{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:30px;
+  height:16px;
+  padding-top:1px;
+  padding-left:5px;
+  padding-right:5px;
+
+  /***  CSS Borders  ***/
+  border-bottom:1px solid rgb(204, 203, 203);
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:12px;
+  color:rgb(25, 25, 25);
+  background-color:rgb(255, 255, 255);
+  text-align:left;
+  white-space:nowrap;
+  opacity:0.750;
+
+}
+
+.trackItemOddMiddle{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:360px;
+  height:15px;
+  padding-top:2px;
+
+  /***  CSS Borders  ***/
+  border-bottom:1px solid rgb(204, 203, 203);
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:12px;
+  color:rgb(25, 25, 25);
+  background-color:rgb(255, 255, 255);
+  text-align:left;
+  white-space:nowrap;
+  opacity:0.750;
+
+}
+
+.trackItemOddRight{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:50px;
+  height:15px;
+  padding-top:2px;
+  padding-right:10px;
+
+  /***  CSS Borders  ***/
+  border-bottom:1px solid rgb(204, 203, 203);
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:12px;
+  color:rgb(25, 25, 25);
+  background-color:rgb(255, 255, 255);
+  text-align:right;
+  white-space:nowrap;
+  opacity:0.750;
+  font-style:italic;
+
+}
+
+.audioButton{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:25px;
+  height:13px;
+
+  /***  CSS Borders  ***/
+  padding:0;
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:9px;
+  color:rgb(80, 55, 70);
+  text-align:center;
+  white-space:nowrap;
+
+  cursor:pointer;
+  
+}
+
+.trackButton{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:100%;
+  height:100%;
+
+  /***  CSS Borders  ***/
+  padding:0;
+  border:none;
+  background:none;
+  outline:none;
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  font-size:12px;
+  color:rgb(172, 40, 60);
+  text-align:left;
+  white-space:nowrap;
+
+  cursor:pointer;
+  
+}
+
+.songLyrics{
+  /***  CSS Position  ***/
+  position:inherit;
+  float:left;
+  overflow:hidden;
+
+  /***  CSS Box Model  ***/
+  width:460px;
+  min-height:262px;
+
+  /***  CSS Borders  ***/
+  border:1px solid rgb(255, 255, 255);
+
+  /***  CSS Text and Font  ***/
+  font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
+  text-align:left;
+  font-size:11px;
+  color:rgb(40, 30, 35);
+  background-color:rgb(255, 255, 255);
+
+}

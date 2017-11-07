@@ -1,0 +1,152 @@
+Option Explicit On
+Imports System.IO
+Imports System.Runtime.InteropServices
+Module modTools
+
+    Public Sub WgetBatch(ListPath As String, DestPath As String, Optional User As String = "", Optional Pass As String = "")
+        Const ForReading = 1, ForWriting = 2
+        Const HTTPREQUEST_PROXYSETTING_PROXY = 2
+        Const WinHttpRequestOption_UserAgentString = 0
+        Const WinHttpRequestOption_EnableRedirects = 6
+        Const AutoLogonPolicy_Always = 0
+        Dim strTemp As String, arrTemp() As String, arrFolders() As String, z As Integer, b As Boolean, x As Integer, objFSO As Object, objRead As Object, objCreate As Object, objWrite As Object
+        Dim wh As Object
+        Dim rText As String, f1 As Integer, f2 As Integer, nText As String
+        objFSO = CreateObject("Scripting.FileSystemObject")
+        objRead = objFSO.OpenTextFile(ListPath, ForReading)
+        While Not objRead.AtEndOfStream
+            Try
+                strTemp = objRead.ReadLine
+                arrTemp = Split(strTemp, ";")
+                If arrFolders Is Nothing Then
+                    ReDim arrFolders(0)
+                    arrFolders(0) = arrTemp(2)
+                    objCreate = objFSO.CreateFolder(DestPath & "\" & arrTemp(2)) : objCreate = Nothing
+                    x = 0
+                Else
+                    b = False
+                    For z = 0 To UBound(arrFolders)
+                        If arrFolders(z) = arrTemp(2) Then b = True
+                    Next
+                    If b = False Then
+                        ReDim Preserve arrFolders(UBound(arrFolders) + 1)
+                        arrFolders(UBound(arrFolders)) = arrTemp(2)
+                        objCreate = objFSO.CreateFolder(DestPath & "\" & arrTemp(2)) : objCreate = Nothing
+                        x = 0
+                    End If
+                End If
+                x += 1
+                wh = CreateObject("WinHttp.WinHttpRequest.5.1")
+                wh.Open("GET", arrTemp(0))
+                If Not User = "" And Not Pass = "" Then
+                    wh.SetCredentials(User, Pass, 0)
+                Else
+                    wh.SetAutoLogonPolicy(AutoLogonPolicy_Always)
+                End If
+                wh.SetProxy(HTTPREQUEST_PROXYSETTING_PROXY, "http://127.0.0.1:8080", "*.*")
+                wh.SetRequestHeader("Accept", "*/*")
+                wh.Option(WinHttpRequestOption_UserAgentString) = "Mozilla/4.0 (compatible; itsme)"
+                wh.Option(WinHttpRequestOption_EnableRedirects) = "True"
+                wh.Send()
+                If wh.status = 200 Then
+                    rText = wh.ResponseText
+                    f1 = InStr(rText, "<!-- google_ad_section_start -->")
+                    If f1 > 0 Then
+                        f2 = InStr(f1, rText, "<p>&nbsp;</p>")
+                        If f2 = 0 Then
+                            f2 = InStr(f1, rText, "<p><span style=""font-size: x-small;""><strong><span style=""background-color: #ffff99;"">SONG INFORMATION</span></strong></span></p>")
+                        End If
+                        If f2 = 0 Then
+                            f2 = InStr(f1, rText, "<p><strong><span style=""font-size: x-small;""><span style=""background-color: #ffff99;"">SONG INFORMATION</span></span></strong></p>")
+                        End If
+                        If f2 = 0 Then
+                            f2 = InStr(f1, rText, "<p><strong><span style=""background-color: #ffff99;""><span style=""font-size: x-small;"">SONG INFORMATION</span></span></strong></p>")
+                        End If
+                        If f2 = 0 Then
+                            f2 = InStr(f1, rText, "<p><span style=""font-size: x-small;""><strong><span style=""color: #000000;""><span style=""background-color: #ffff99;"">SONG INFORMATION</span></span></strong></span></p>")
+                        End If
+                        If f2 = 0 Then
+                            f2 = InStr(f1, rText, "<p><!-- p.p1 {margin: 0.0px 0.0px 18.0px 0.0px; line-height: 18.0px; font: 9.0px 'Lucida Grande'; color: #101010; background-color: #feff99} p.p2 {margin: 0.0px 0.0px 18.0px 0.0px; line-height: 18.0px; font: 9.0px 'Lucida Grande'; color: #101010} --><span style=""font-size: x-small; background-color: #ffff99;""><strong>SONG INFORMATION</strong></span></p>")
+                        End If
+                        If f2 = 0 Then
+                            f2 = InStr(f1, rText, "<p><!-- p.p1 {margin: 0.0px 0.0px 13.0px 0.0px; line-height: 19.0px; font: 9.0px Georgia; background-color: #feff99} p.p2 {margin: 0.0px 0.0px 13.0px 0.0px; line-height: 19.0px; font: 9.0px Georgia} --></p>")
+                        End If
+                        If f2 = 0 Then
+                            f2 = InStr(f1, rText, "<p><span style=""background-color: #ffff99;""><strong><span style=""font-size: x-small;"">SONG INFORMATION</span></strong></span></p>")
+                        End If
+                        If f2 = 0 Then
+                            f2 = InStr(f1, rText, "<p><span style=""color: #000000; background-color: #ffff99;""><strong><span style=""font-size: x-small;"">SONG INFORMATION</span></strong></span></p>")
+                        End If
+                        If f2 > 0 Then
+                            nText = "<!DOCTYPE HTML>" & vbCrLf & "<html>" & vbCrLf & "<head>" & vbCrLf & "<title>" & vbCrLf & arrTemp(1) & " Lyrics" & vbCrLf & "</title>" & vbCrLf & "</head>" & vbCrLf & "<body>" & vbCrLf & "<h1>" & arrTemp(1) & "</h1>" & vbCrLf & Mid(rText, f1 + 32, f2 - f1 - 32) & "</body>" & vbCrLf & "</html>"
+                            objCreate = objFSO.CreateTextFile(DestPath & "\" & arrTemp(2) & "\" & x & ".html") : objCreate.Close : objCreate = Nothing
+                            objWrite = objFSO.OpenTextFile(DestPath & "\" & arrTemp(2) & "\" & x & ".html", ForWriting)
+                            objWrite.Write(nText)
+                            objWrite.Close
+                        Else
+                            Debug.Print(DestPath & "\" & arrTemp(2) & "\" & x & ".html (" & arrTemp(1) & "): closing delimiter not found")
+                        End If
+                    Else
+                        Debug.Print(DestPath & "\" & arrTemp(2) & "\" & x & ".html (" & arrTemp(1) & "): opening delimiter not found")
+                    End If
+                End If
+                wh = Nothing
+            Catch ex As Exception
+                Debug.Print(ex.Message)
+            End Try
+        End While
+        objRead.Close : objRead = Nothing : objWrite = Nothing : objFSO = Nothing
+
+    End Sub
+
+    Public Sub ConvertLyricsToHTML(ReadFile As String, WriteFile As String)
+        Const ForReading = 1, ForWriting = 2
+        Dim strLine As String, strWrite As String = "", l As Integer, b As Boolean, objFSO As Object, objRead As Object, objCreate As Object, objWrite As Object
+        objFSO = CreateObject("Scripting.FileSystemObject")
+        objRead = objFSO.OpenTextFile(ReadFile, ForReading)
+        While Not objRead.AtEndOfStream
+            l += 1
+            strLine = objRead.ReadLine
+            If l = 1 Then
+                strWrite = "<!DOCTYPE HTML>" & vbCrLf & "<html>" & vbCrLf & "<head>" & vbCrLf & "<title>" & vbCrLf & strLine & " Lyrics" & vbCrLf & "</title>" & vbCrLf & "</head>" & vbCrLf & "<body>" & vbCrLf & "<h1>" & strLine & "</h1>" & vbCrLf
+            Else
+                If Left(strLine, 1) = "[" And Right(strLine, 1) = "]" Then
+                    strWrite += "<p>"
+                    b = True
+                ElseIf Len(strLine) = 0 Then
+                    If b = True Then
+                        If Right(strWrite, 8) = "<br />" & vbCrLf Then
+                            strWrite = Left(strWrite, Len(strWrite) - 8)
+                        End If
+                        strWrite += "</p>" & vbCrLf
+                        b = False
+                    End If
+                Else
+                    strWrite += strLine & "<br />" & vbCrLf
+                End If
+            End If
+        End While
+        objRead.Close : objRead = Nothing
+        If b = True Then
+            If Right(strWrite, 8) = "<br />" & vbCrLf Then
+                strWrite = Left(strWrite, Len(strWrite) - 8)
+            End If
+            strWrite += "</p>" & vbCrLf
+        End If
+        strWrite += "</body>" & vbCrLf & "</html>"
+        objCreate = objFSO.CreateTextFile(WriteFile) : objCreate.Close : objCreate = Nothing
+        objWrite = objFSO.OpenTextFile(WriteFile, ForWriting)
+        objWrite.Write(strWrite)
+        objWrite.Close : objWrite = Nothing
+        objFSO = Nothing
+
+    End Sub
+
+    Public Sub ConvertLyricsToHTML_All()
+        Dim i As Integer
+        For i = 1 To 11
+            ConvertLyricsToHTML("./lyrics/9/" & i & ".txt", "./lyrics/9/" & i & ".html")
+        Next i
+    End Sub
+
+End Module
