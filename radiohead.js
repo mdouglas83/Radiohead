@@ -73,6 +73,7 @@ function loadAudio(i, j) {
     ajs.load[0];
 	//var ajs_wrapper = ajs.parentElement;
 	//ajs.autoplay = "true";
+	loadLyrics(i, j);
 }
 
 function loadLyrics(i, j) {
