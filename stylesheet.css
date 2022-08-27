@@ -73,9 +73,7 @@ pre {
   margin:auto;
   padding:5px 0px;
   /* overflow:hidden; */
-
-  /***  CSS Borders  ***/
-  border-bottom:1px solid rgb(255, 255, 255);
+  
   /***  CSS Text and Font  ***/
   font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
   font-size:12px;
@@ -118,11 +116,11 @@ pre {
 
   /***  CSS Box Model  ***/
   width:1246px;
-  min-height:300px;
+  /* min-height:300px; */
   margin:0px;
   padding:10px;
   overflow:hidden;
-  display:inline-block;
+  display:inline-table;
 
   /***  CSS Text and Font  ***/
   font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
@@ -170,6 +168,23 @@ pre {
   color:rgb(40, 30, 35);
   background-color:rgb(255, 255, 255);
 
+}
+
+.albumFooter {
+  display:inline-table;
+  text-align:center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  letter-spacing:8px;
+  word-spacing: 5px;
+  font-style:oblique;
+  width:1266px;
+  margin:0px;
+  padding:10px 0px 10px 0px;
+  color:rgb(255, 255, 255, 0.5);
+  background-color:rgb(0, 0, 0, 0.9);
+  /* display:inline-flexbox; */
+  /* flex:auto; */
 }
 
 .trackHeaderLeft{
