@@ -20,43 +20,36 @@ function songlist(i) {
 		if (isOdd(l) === 1) {
 			htmlList += "<div class=\"trackItemOddLeft\">";
 			if (i > 0) {
-				htmlList += "<button class=\"audioButton\" onclick=\"javascript:loadAudio(" + i + ", " + l + ");\"> play </button>";
+				htmlList += "<button class=\"audioButton\" onclick=\"javascript:loadAudioAndLyrics(" + i + ", " + l + ");\"> play </button>";
 			}
 			htmlList += "</div><div class=\"trackItemOddMiddle\">";
 			if (i > 0) {
-				htmlList += "<button class=\"trackButton\" onclick=\"javascript:loadLyrics(" + i + ", " + l + ");\">" + snip[0] + "</button>";
+				htmlList += "<button class=\"trackButton\" onclick=\"javascript:loadAudioAndLyrics(" + i + ", " + l + ");\">" + snip[0] + "</button>";
 			}
 			htmlList += "</div><div class=\"trackItemOddRight\">" + snip[1] + "</div>\n";
 		} else {
 			htmlList += "<div class=\"trackItemEvenLeft\">";
 			if (i > 0) {
-				htmlList += "<button class=\"audioButton\" onclick=\"javascript:loadAudio(" + i + ", " + l + ");\"> play </button>";
+				htmlList += "<button class=\"audioButton\" onclick=\"javascript:loadAudioAndLyrics(" + i + ", " + l + ");\"> play </button>";
 			}
 			htmlList += "</div><div class=\"trackItemEvenMiddle\">";
 			if (i > 0) {
-				htmlList += "<button class=\"trackButton\" onclick=\"javascript:loadLyrics(" + i + ", " + l + ");\">" + snip[0] + "</button>";
+				htmlList += "<button class=\"trackButton\" onclick=\"javascript:loadAudioAndLyrics(" + i + ", " + l + ");\">" + snip[0] + "</button>";
 			}
 			htmlList += "</div><div class=\"trackItemEvenRight\">" + snip[1] + "</div>\n";
 		}
 	}
 	for (var x = 1; x < 10; x++) {
 		if (x === i) {
-			//document.getElementById('album' + x).style.border = "2px solid rgb(220, 130, 160)";
-			document.getElementById('album' + x).style.boxShadow = "1px 1px 2px 1px rgba(255, 130, 150, 1.000)";
-			document.getElementById('album' + x).style.webkitBoxShadow = "1px 1px 2px 1px rgba(255, 130, 150, 1.000)";
-			document.getElementById('album' + x).style.mozBoxShadow = "1px 1px 2px 1px rgba(255, 130, 150, 1.000)";
-			document.getElementById('album' + x).style.opacity = 1.000;
+			document.getElementById('album' + x).style.border = "5px solid rgb(255, 100, 130)";
+			// document.getElementById('album' + x).style.boxShadow = "1px 1px 2px 1px rgba(255, 130, 150, 1.000)";
+			// document.getElementById('album' + x).style.webkitBoxShadow = "1px 1px 2px 1px rgba(255, 130, 150, 1.000)";
+			// document.getElementById('album' + x).style.mozBoxShadow = "1px 1px 2px 1px rgba(255, 130, 150, 1.000)";
 		} else {
-			if (document.getElementById('album' + x).style.boxShadow != "1px 1px 2px 1px rgba(135, 130, 150, 1.000)") {
-				document.getElementById('album' + x).style.boxShadow = "1px 1px 2px 1px rgba(135, 130, 150, 1.000)";
-			}
-			if (document.getElementById('album' + x).style.webkitBoxShadow != "1px 1px 2px 1px rgba(135, 130, 150, 1.000)") {
-				document.getElementById('album' + x).style.webkitBoxShadow = "1px 1px 2px 1px rgba(135, 130, 150, 1.000)";
-			}
-			if (document.getElementById('album' + x).style.mozBoxShadow != "1px 1px 2px 1px rgba(135, 130, 150, 1.000)") {
-				document.getElementById('album' + x).style.mozBoxShadow = "1px 1px 2px 1px rgba(135, 130, 150, 1.000)";
-			}
-			document.getElementById('album' + x).style.opacity = 0.875;
+			document.getElementById('album' + x).style.border = "5px solid rgb(60, 60, 60)";
+			// document.getElementById('album' + x).style.boxShadow = "1px 1px 2px 1px rgba(135, 130, 150, 1.000)";
+			// document.getElementById('album' + x).style.webkitBoxShadow = "1px 1px 2px 1px rgba(135, 130, 150, 1.000)";
+			// document.getElementById('album' + x).style.mozBoxShadow = "1px 1px 2px 1px rgba(135, 130, 150, 1.000)";
 		}
 	}
 	document.getElementById('albumcover').innerHTML = "<img src=\"./albums/" + i + ".jpg\">";
@@ -67,16 +60,12 @@ function clearlist(i) {
 	document.getElementById('songlist').innerHTML = "<div style=\"width: 100%; height: 100%;\" onclick=\"javascript:songlist(" + i + ");\"></div>";
 }
 
-function loadAudio(i, j) {
+function loadAudioAndLyrics(i, j) {
 	var ajs = document.getElementById('ajs');
     ajs.src = "./mp3/" + i + "/" + j + ".mp3";
     ajs.load[0];
 	//var ajs_wrapper = ajs.parentElement;
 	//ajs.autoplay = "true";
-	loadLyrics(i, j);
-}
-
-function loadLyrics(i, j) {
 	document.getElementById('songlyrics').src = "./lyrics/" + i + "/" + j + ".html";
 }
 
