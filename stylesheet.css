@@ -74,8 +74,7 @@ pre {
   /* overflow:hidden; */
 
   /***  CSS Borders  ***/
-  /* border-bottom:1px solid rgb(255, 255, 255); */
-
+  border-bottom:1px solid rgb(255, 255, 255);
   /***  CSS Text and Font  ***/
   font-family:Helvetica,Arial,'DejaVu Sans','Liberation Sans',Freesans,sans-serif;
   font-size:12px;
